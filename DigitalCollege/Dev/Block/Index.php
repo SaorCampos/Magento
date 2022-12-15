@@ -13,14 +13,14 @@ class Index extends \Magento\Framework\View\Element\Template
         $dc = $this->digitalFactory->create()->getCollection();
         return $dc->getData();
     }
-    // public function execute(){
-    //     $dc = $this->digitalFactory->create();
-    //     $dc->setData([
-    //         'author_name' => 'Eu',
-    //         'email' => 'email@eu.com.tu',
-    //         'description' => 'Agora Vai Sem erro?!'
-    //         ]
-    //     );
-    //     $dc->save();
-    // }
+    public function execute(){
+        $dc = $this->digitalFactory->create();
+        $dc->setData([
+            'author_name' => 'Eu',
+            'email' => 'email@eu.com.tu',
+            'description' => 'Agora Vai Sem erro?!'
+            ]
+        );
+        $dc->save();
+    }
 }

@@ -2,4 +2,5 @@
     <type name="DigitalCollege\Dev\Controller\Index\Index">
         <plugin name="Digital_Controller" type="DigitalCollege\Dev\Plugin\DevPlugin" disabled="false"/>
     </type>
+    <preference for="DigitalCollege\Dev\Api\PostManagementInterface" type="DigitalCollege\Dev\Model\PostManagement"/>
 </config>
