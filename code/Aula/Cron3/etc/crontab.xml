@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://ww.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="3_cronjob" instance="Aula\Cron3\Cron\Cron3" method="execute">
+            <schedule>
+            * * * * *
+            </schedule>
+        </job>
+    </group>
+</config>
