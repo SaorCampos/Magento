@@ -7,9 +7,9 @@ namespace DigitalCollege\Dev\Api;
 interface ProductLinkManagementInterface
 {
     /**
-     * Get products assigned to a category
+     * Get products assigned to an ID
      *
-     *@param int $id
+     * @param int $id
      * @return \DigitalCollege\Dev\Api\Data\CategoryProductLinkInterface[]
      */
     public function getAssignedProductsById($id);

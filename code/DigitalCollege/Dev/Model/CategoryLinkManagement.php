@@ -1,39 +1,40 @@
 <?php
-    namespace DigitalCollege\Dev\Model;
+namespace DigitalCollege\Dev\Model;
 
 /**
  * Class CategoryLinkManagement
  */
-class CategoryLinkManagement implements \DigitalCollege\Dev\Api\CategoryLinkManagementInterface,
-\DigitalCollege\Dev\Api\ProductLinkManagementInterface
+class CategoryLinkManagement implements \DigitalCollege\Dev\Api\CategoryLinkManagementInterface, \DigitalCollege\Dev\Api\ProductLinkManagementInterface
 {
     /**
      * @var \Magento\Catalog\Api\CategoryRepositoryInterface
      */
     protected $categoryRepository;
-
+    /**
+     * @var \Magento\Catalog\Api\ProductRepositoryInterface\
+     */
+    protected $productRepository;
     /**
      * @var \DigitalCollege\Dev\Api\Data\CategoryProductLinkInterfaceFactory
      */
-    protected $productLinkFactory;
-
+    protected $productsLinkFactory;
     /**
      * CategoryLinkManagement constructor.
      *
      * @param \Magento\Catalog\Api\CategoryRepositoryInterface $categoryRepository
-     * @param \Magento\Catalog\Api\ProductRepositoryInterface $productRepositoy
+     * @param \Magento\Catalog\Api\ProductRepositoryInterface\ $productRepository
      * @param \DigitalCollege\Dev\Api\Data\CategoryProductLinkInterfaceFactory $productLinkFactory
      */
     public function __construct(
         \Magento\Catalog\Api\CategoryRepositoryInterface $categoryRepository,
         \Magento\Catalog\Api\ProductRepositoryInterface $productRepository,
         \DigitalCollege\Dev\Api\Data\CategoryProductLinkInterfaceFactory $productLinkFactory
+
     ) {
         $this->categoryRepository = $categoryRepository;
         $this->productRepository = $productRepository;
         $this->productLinkFactory = $productLinkFactory;
     }
-
     /**
      * {@inheritdoc}
      */
@@ -47,16 +48,13 @@ class CategoryLinkManagement implements \DigitalCollege\Dev\Api\CategoryLinkMana
             ]];
         }
         $categoryDesc = $category->getDescription();
-
         /** @var \Magento\Catalog\Model\ResourceModel\Product\Collection $products */
         $products = $category->getProductCollection()
             ->addFieldToSelect('position')
             ->addFieldToSelect('name')
             ->addFieldToSelect('price');
-
         /** @var \DigitalCollege\Dev\Api\Data\CategoryProductLinkInterface[] $links */
         $links = [];
-
         /** @var \Magento\Catalog\Model\Product $product */
         foreach ($products->getItems() as $product) {
             /** @var \DigitalCollege\Dev\Api\Data\CategoryProductLinkInterface $link */
@@ -68,9 +66,11 @@ class CategoryLinkManagement implements \DigitalCollege\Dev\Api\CategoryLinkMana
                 ->setCategoryDescription($categoryDesc);
             $links[] = $link;
         }
-
         return $links;
     }
+    /**
+     * {@inheritdoc}
+     */
     public function getAssignedProductsById($id)
     {
         $productId = $this->productRepository->getById($id);

@@ -15,27 +15,25 @@ class CategoryProductLink extends \Magento\Framework\Api\AbstractExtensibleObjec
     const KEY_CATEGORY_DESC         = 'category_description';
     const KEY_POSITION              = 'position';
     /**#@-*/
-
-      /**
-        * Initialize internal storage
-        *
-        * @param \Magento\Framework\Api\ExtensionAttributesFactory
-        $extensionFactory
-        * @param AttributeValueFactory $attributeValueFactory
-        * @param array $data
+    /**
+     * Initialize internal storage
+     *
+     * @param \Magento\Framework\Api\ExtensionAttributesFactory
+    $extensionFactory
+     * @param AttributeValueFactory $attributeValueFactory
+     * @param array $data
      */
     public function __construct(
-       \Magento\Framework\Api\ExtensionAttributesFactory
+        \Magento\Framework\Api\ExtensionAttributesFactory
         $extensionFactory,
-       \Magento\Framework\Api\AttributeValueFactory
+        \Magento\Framework\Api\AttributeValueFactory
         $attributeValueFactory,
         $data = []
-     ) {
-          $this->extensionFactory = $extensionFactory;
-          $this->attributeValueFactory = $attributeValueFactory;
-          parent::__construct($extensionFactory,$attributeValueFactory);
-        }
-
+    ) {
+        $this->extensionFactory = $extensionFactory;
+        $this->attributeValueFactory = $attributeValueFactory;
+        parent::__construct($extensionFactory,$attributeValueFactory);
+    }
     /**
      * {@inheritdoc}
      */
@@ -43,7 +41,6 @@ class CategoryProductLink extends \Magento\Framework\Api\AbstractExtensibleObjec
     {
         return $this->_get(self::KEY_SKU);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -51,7 +48,6 @@ class CategoryProductLink extends \Magento\Framework\Api\AbstractExtensibleObjec
     {
         return $this->_get(self::KEY_NAME);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -59,7 +55,6 @@ class CategoryProductLink extends \Magento\Framework\Api\AbstractExtensibleObjec
     {
         return $this->_get(self::KEY_POSITION);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -67,7 +62,6 @@ class CategoryProductLink extends \Magento\Framework\Api\AbstractExtensibleObjec
     {
         return $this->_get(self::KEY_PRICE);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -75,7 +69,6 @@ class CategoryProductLink extends \Magento\Framework\Api\AbstractExtensibleObjec
     {
         return $this->_get(self::KEY_CATEGORY_DESC);
     }
-
     /**
      * @param string $sku
      * @return $this
@@ -84,7 +77,6 @@ class CategoryProductLink extends \Magento\Framework\Api\AbstractExtensibleObjec
     {
         return $this->setData(self::KEY_SKU, $sku);
     }
-
     /**
      * @param string $name
      * @return $this
@@ -93,7 +85,6 @@ class CategoryProductLink extends \Magento\Framework\Api\AbstractExtensibleObjec
     {
         return $this->setData(self::KEY_NAME, $name);
     }
-
     /**
      * @param int $position
      * @return $this
@@ -102,7 +93,6 @@ class CategoryProductLink extends \Magento\Framework\Api\AbstractExtensibleObjec
     {
         return $this->setData(self::KEY_POSITION, $position);
     }
-
     /**
      * @param float $price
      * @return $this
@@ -111,7 +101,6 @@ class CategoryProductLink extends \Magento\Framework\Api\AbstractExtensibleObjec
     {
         return $this->setData(self::KEY_PRICE, $price);
     }
-
     /**
      * @param string $description
      * @return $this
@@ -120,5 +109,4 @@ class CategoryProductLink extends \Magento\Framework\Api\AbstractExtensibleObjec
     {
         return $this->setData(self::KEY_CATEGORY_DESC, $description);
     }
-
 }

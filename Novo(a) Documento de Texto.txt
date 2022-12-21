@@ -1,0 +1,17 @@
+bin/magento module:disable Magento_Elasticsearch Magento_Elasticsearch6 Magento_Elasticsearch7 Magento_InventoryElasticsearch
+
+
+bin/magento deploy:mode:set developer
+
+composer dump-autoload
+composer install
+bin/magento setup:upgrade
+bin/magento setup:di:compile
+bin/magento module:status
+bin/magento module:enable "nome do module"
+bin/magento module:disable "nome do module"
+bin/magento setup:static-content:deploy -f
+bin/magento indexer:reindex
+bin/magento cache:clean && bin/magento cache:flush
+bin/magento cron:run
+bin/magento indexer:reindex
