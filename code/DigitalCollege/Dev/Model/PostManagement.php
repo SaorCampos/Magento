@@ -6,8 +6,8 @@ class PostManagement
     /**
      * {@inheritdoc}
      */
-    public function getPost($param)
+    public function getPost()
     {
-        return $param;
+        return;
     }
 }
